@@ -26,7 +26,9 @@ constructor(private rangeService: MaxRangeService){
     this.form.valueChanges.subscribe(values =>{
       if (this.form.errors?.['rangeInvalid']){
         const maxRange = this.form.get('maxRange')?.value
+        const minRange = this.form.get('minRange')?.value
         this.form.get('minRange')?.setValue(maxRange -1,{emitEvent:false})
+        this.form.get('maxRange')?.setValue(minRange +1,{emitEvent:false})
       }
     })
   }

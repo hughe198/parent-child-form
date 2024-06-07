@@ -11,7 +11,7 @@
     <div>
       <label for="maxRange">Max Range</label>
       <app-range
-        [min]="form.get('minRange')!.value"
+        [min]="0"
         [max]="100"
         [value]="form.get('maxRange')!.value"
         (newValue)="onMaxRangeChange($event)">
