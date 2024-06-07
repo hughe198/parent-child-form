@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+    <div>
+      <label for="minRange">Min Range</label>
+      <app-range
+        [min]="0"
+        [max]="100"
+        [value]="form.get('minRange')!.value"
+        (newValue)="onMinRangeChange($event)">
+      </app-range>
+    </div>
+    <div>
+      <label for="maxRange">Max Range</label>
+      <app-range
+        [min]="form.get('minRange')!.value"
+        [max]="100"
+        [value]="form.get('maxRange')!.value"
+        (newValue)="onMaxRangeChange($event)">
+      </app-range>
+    </div>
+    <div *ngIf="form.errors?.['rangeInvalid']">
+      <p>Min range must be less than max range.</p>
+    </div>
+  </form> 

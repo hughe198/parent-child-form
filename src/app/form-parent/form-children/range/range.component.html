@@ -1,0 +1,8 @@
+<div class ="container ">
+    <div class = "d-flex">
+        <div class ="flex-row">
+            <input type="range" data-test-id ="slider" [min]="min" [max]="max" [(ngModel)]="value" (input)="emitValue()">
+            <input type="text" data-test-id ="slider" [min]="min" [max]="max" [(ngModel)]="value" (input)="emitValue()">
+        </div>
+    </div>
+</div>
