@@ -17,7 +17,9 @@ form:FormGroup
 
 constructor(private rangeService: MaxRangeService){
   this.form = new FormGroup({
+    minTitle: new FormControl("Min Range"),
     minRange: new FormControl(25),
+    maxTitle: new FormControl("Max Range"),
     maxRange: new FormControl(75)
   },{validators:this.rangeService.rangeValidator()})
 
@@ -29,6 +31,7 @@ constructor(private rangeService: MaxRangeService){
         const minRange = this.form.get('minRange')?.value
         this.form.get('minRange')?.setValue(maxRange -1,{emitEvent:false})
         this.form.get('maxRange')?.setValue(minRange +1,{emitEvent:false})
+
       }
     })
   }

@@ -1,7 +1,8 @@
 <form [formGroup]="form">
+  <label>Range Sliders</label>
     <div>
-      <label for="minRange">Min Range</label>
       <app-range
+        [title]="form.get('minTitle')!.value"
         [min]="0"
         [max]="100"
         [value]="form.get('minRange')!.value"
@@ -9,8 +10,8 @@
       </app-range>
     </div>
     <div>
-      <label for="maxRange">Max Range</label>
       <app-range
+        [title]="form.get('maxTitle')!.value"
         [min]="0"
         [max]="100"
         [value]="form.get('maxRange')!.value"

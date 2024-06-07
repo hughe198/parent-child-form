@@ -8,10 +8,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './range.component.scss'
 })
 export class RangeComponent {
-
 @Input() min = 0
 @Input() max = 100
 @Input() value: number = 50
+@Input() title: string = "title"
 @Output() newValue = new EventEmitter<number>()
 
 
