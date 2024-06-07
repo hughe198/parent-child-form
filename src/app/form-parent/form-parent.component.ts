@@ -20,20 +20,53 @@ constructor(private rangeService: MaxRangeService){
     minTitle: new FormControl("Min Range"),
     minRange: new FormControl(25),
     maxTitle: new FormControl("Max Range"),
-    maxRange: new FormControl(75)
+    maxRange: new FormControl(75),
+    min: new FormControl(0),
+    max: new FormControl(100)
+    
   },{validators:this.rangeService.rangeValidator()})
 
 }
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(values =>{
-      if (this.form.errors?.['rangeInvalid']){
-        const maxRange = this.form.get('maxRange')?.value
-        const minRange = this.form.get('minRange')?.value
-        this.form.get('minRange')?.setValue(maxRange -1,{emitEvent:false})
-        this.form.get('maxRange')?.setValue(minRange +1,{emitEvent:false})
+ngOnInit(): void {
+  this.form.valueChanges.subscribe(() => {
+    if (this.form.errors?.['rangeInvalid']) {
+      this.correctRangeValues();
+    }
+  });
+}
 
-      }
-    })
+
+
+  correctRangeValues(){
+    const minRangeControl = this.form.get('minRange');
+    const maxRangeControl = this.form.get('maxRange');
+    const minControl = this.form.get('min');
+    const maxControl = this.form.get('max');
+
+    if (!minRangeControl || !maxRangeControl || !minControl || !maxControl) {
+      return;
+    }
+    
+    const minRange = minRangeControl.value;
+    const maxRange = maxRangeControl.value;
+    const min = minControl.value;
+    const max = maxControl.value;
+    
+    if (minRange >= maxRange) {
+      minRangeControl.setValue(maxRange - 1, { emitEvent: true });
+    }
+
+    if (maxRange <= minRange) {
+      maxRangeControl.setValue(minRange + 1, { emitEvent: true });
+    }
+
+    if (minRange <= min) {
+      minRangeControl.setValue(min, { emitEvent: true });
+    }
+
+    if (maxRange > max) {
+      maxRangeControl.setValue(max, { emitEvent: false });
+    }
   }
 
   onMinRangeChange(value:number){

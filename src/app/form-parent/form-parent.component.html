@@ -3,8 +3,8 @@
     <div>
       <app-range
         [title]="form.get('minTitle')!.value"
-        [min]="0"
-        [max]="100"
+        [min]="form.get('min')!.value"
+        [max]="form.get('max')!.value"
         [value]="form.get('minRange')!.value"
         (newValue)="onMinRangeChange($event)">
       </app-range>
@@ -12,8 +12,8 @@
     <div>
       <app-range
         [title]="form.get('maxTitle')!.value"
-        [min]="0"
-        [max]="100"
+        [min]="form.get('min')!.value"
+        [max]="form.get('max')!.value"
         [value]="form.get('maxRange')!.value"
         (newValue)="onMaxRangeChange($event)">
       </app-range>

@@ -13,10 +13,15 @@ export class MaxRangeService {
       const minRangeControl = control.get("minRange");
       const maxRangeControl = control.get("maxRange");
       if (!minRangeControl || !maxRangeControl) {
-        return null; // No validation if controls are not found
+        return null; 
       }
+
       const minRange = minRangeControl.value;
       const maxRange = maxRangeControl.value;
+
+      if (minRange < 0 || maxRange > 100 || minRange == maxRange) {
+        return { rangeInvalid: true };
+      }
       return minRange < maxRange ? null : {rangeInvalid:true}
     }
   }
