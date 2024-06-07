@@ -35,8 +35,6 @@ ngOnInit(): void {
   });
 }
 
-
-
   correctRangeValues(){
     const minRangeControl = this.form.get('minRange');
     const maxRangeControl = this.form.get('maxRange');
